@@ -1,0 +1,14 @@
+apply from: '../../epagesj/gradle/plugins.gradle'
+
+dependencies{
+	compile project(':product-dao')	
+}
+
+project(':epagesj-server').dependencies{
+    testRuntime project(project.path)
+}
+
+dependencies {
+    // add external dependencies to your plugin, e.g.
+    // pluginDist libraries.pdfbox
+}
