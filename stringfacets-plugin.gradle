@@ -1,7 +1,8 @@
 apply from: '../../epagesj/gradle/plugins.gradle'
 
 dependencies{
-	compile project(':product-dao')	
+	compile project(':product-dao')
+    compile project(':index')
 }
 
 project(':epagesj-server').dependencies{

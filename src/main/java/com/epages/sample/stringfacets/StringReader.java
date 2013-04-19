@@ -15,7 +15,6 @@ import com.epages.product.attribute.entry.AttributeKey;
 import com.epages.product.attribute.entry.AttributeKeyBuilder;
 import com.epages.product.attribute.entry.CustomAttributeMapEntry;
 import com.epages.product.attribute.entry.CustomAttributeValue;
-import com.epages.product.attribute.entry.CustomSearchFilterAttributeType;
 import com.epages.product.reader.AttributeValidator;
 import com.epages.product.reader.BasePeekableReader;
 
@@ -38,7 +37,7 @@ final class StringReader extends BasePeekableReader<CustomAttributeValue, Custom
             @Override
             public CustomAttributeMapEntry mapRow(ResultSet rs, int rowNum) throws SQLException {
                 AttributeKey key = new AttributeKeyBuilder(rs.getInt("main_productid"), rs.getString("attributekey")).withVariationId(getVariationId(rs)).localised(rs.getString("langcode")).build();
-                CustomAttributeValue attributeValue = new CustomAttributeValue(rs.getString("attributename"), CustomSearchFilterAttributeType.PreDefLocalizedString, rs.getString("langcode"));
+                CustomAttributeValue attributeValue = new CustomAttributeValue(rs.getString("attributename"), CustomSearchFilterAttributeTypeExtensions.valueOf(rs.getString("attributetype")), rs.getString("langcode"));
                 attributeValue.setAttributeValue(rs.getString("attributevalue"), rs.getInt("attributeposition"));
                 attributeValue.setIssearchfilter(1);
                 return new CustomAttributeMapEntry(key, attributeValue);
