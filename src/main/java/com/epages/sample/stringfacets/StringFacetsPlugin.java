@@ -16,5 +16,6 @@ public final class StringFacetsPlugin extends AbstractModule implements Plugin {
 
         Multibinder<AttributeReader<?, ?>> attributeBinder = Multibinder.newSetBinder(binder(), new TypeLiteral<AttributeReader<?, ?>>() {});
         attributeBinder.addBinding().to(LocalizedStringReader.class);
+        attributeBinder.addBinding().to(StringReader.class);
     }
 }
